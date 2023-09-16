@@ -4,12 +4,13 @@ import { GetUserController } from "./controllers/get-users/get-users";
 import { MongoGetUsersRepository } from "./repositories/get-users/mongo-get-users";
 import { MongoClient } from "./database/mongo";
 
-config();
 
 // Rota publica e de teste
 
 
 const main = async () => {
+  config();
+  
   const app = express();
 
   await MongoClient.connect();
