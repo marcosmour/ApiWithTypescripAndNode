@@ -5,7 +5,7 @@ import { MongoGetUsersRepository } from "./repositories/get-users/mongo-get-user
 import { MongoClient } from "./database/mongo";
 import { MongoCreateUserRepository } from "./repositories/create-user/mongo-create-user";
 import { CreateUserController } from "./controllers/create-user/create-user";
-import { json } from "stream/consumers";
+
 
 
 // Rota publica e de teste
@@ -31,7 +31,7 @@ const main = async () => {
   
     const { body, statusCode } = await getUsersController.handle();
   
-    res.send(body).status(statusCode);
+    res.status(statusCode).send(body)
   });
 
   const port = process.env.PORT || 8000;
@@ -47,7 +47,7 @@ const main = async () => {
 
     const { body, statusCode } = await createUserController.handle({body: req.body})
 
-    res.send(body).status(statusCode)
+    res.status(statusCode).send(body)
   })
 };
 
